@@ -9,7 +9,6 @@
     <th>name</th>
     </tr>
     </thead>
-
     <tbody>
 
     <tr *ngFor="let user of users; index as i" >
@@ -24,11 +23,19 @@
 <ng-template #isEmpty>\
 
 </ng-template>
-  <div class="">
-    <h3>No users found</h3>
-  </div>
-  @for (item of items; track id;let index = $index) {
+
+
+<button (click)="setVisibility()">{{buttonText ? "Mostrar" : "Ocultar" }} </button>
+
+
+  <div *ngIf="visible; else notEnable">
+    <h1>{{ternario ? "Catalina" : "Vicente" }}</h1>
+    <button (click)="setTernario()">Switch Person</button>
+    <h3>Users Founds </h3>
+  @for (item of items; track $index) {
     <li>{{ item }}</li>
   } @empty {
     <li>There are no items.</li>
-  }
+  }</div>
+
+<ng-template #notEnable style="padding: 20px; "> Not enable page sorry </ng-template>
