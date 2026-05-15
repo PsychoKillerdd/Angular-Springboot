@@ -1,41 +1,52 @@
 <h2>{{title}}</h2>
-
-<ul>
-  <li>{{name}}</li>
-  <table *ngIf="users != undefined && users.length > 0 else isEmpty">
-    <thead>
-    <tr>
-      <th>id</th>
-    <th>name</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr *ngFor="let user of users; index as i" >
-      <td> {{i + 1}} </td>
-      <td> {{user}} </td>
-
-    </tr>
-    </tbody>
-
-  </table>
-</ul>
-<ng-template #isEmpty>\
-
-</ng-template>
-
-
 <button (click)="setVisibility()">{{buttonText ? "Mostrar" : "Ocultar" }} </button>
+<button (click)="setTernario()">Switch Person</button>
+
+<!--<ul>-->
+<!--  <li>{{name}}</li>-->
+<!--  <table *ngIf="users != undefined && users.length > 0 else isEmpty">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>id</th>-->
+<!--    <th>name</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+
+<!--    <tr *ngFor="let user of users; index as i" >-->
+<!--      <td> {{i + 1}} </td>-->
+<!--      <td> {{user}} </td>-->
+
+<!--    </tr>-->
+<!--    </tbody>-->
+
+<!--  </table>-->
+<!--</ul>-->
+<!--<ng-template #isEmpty>\-->
+
+<!--</ng-template>-->
 
 
-  <div *ngIf="visible; else notEnable">
-    <h1>{{ternario ? "Catalina" : "Vicente" }}</h1>
-    <button (click)="setTernario()">Switch Person</button>
-    <h3>Users Founds </h3>
+<!--<div *ngIf="visible; else notEnable">-->
+<!--    <h1>{{ternario ? "Catalina" : "Vicente" }}</h1>-->
+<!--    <h3>Users Founds </h3>-->
+<!--  @for (item of items; track $index) {-->
+<!--    <li>{{ item }}</li>-->
+<!--  } @empty {-->
+<!--    <li>There are no items.</li>-->
+<!--  }</div>-->
+
+<!--<ng-template #notEnable style="padding: 20px; "> Not enable page sorry </ng-template>-->
+
+@if (visible) {
+  <h1>{{ternario ? "Catalina" : "Vicente" }}</h1>
+  <h3>Users Founds </h3>
   @for (item of items; track $index) {
     <li>{{ item }}</li>
-  } @empty {
-    <li>There are no items.</li>
-  }</div>
+  }
+} @else {
+    Not enable page sorry
+}
+<app-counter [title]="subtitle">
 
-<ng-template #notEnable style="padding: 20px; "> Not enable page sorry </ng-template>
+</app-counter>
